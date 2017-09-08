@@ -1,0 +1,564 @@
+{
+  "teams": [
+    {
+      "id": 1,
+      "name": "Greenandblue",
+      "sport": "Badminton"
+    },
+    {
+      "id": 2,
+      "name": "DoubleR",
+      "sport": "Badminton"
+    },
+    {
+      "id": 3,
+      "name": "MJ",
+      "sport": "Badminton"
+    },
+    {
+      "id": 4,
+      "name": "LesWarriors",
+      "sport": "Badminton"
+    },
+    {
+      "id": 5,
+      "name": "JCDR",
+      "sport": "Badminton"
+    },
+    {
+      "id": 6,
+      "name": "AH",
+      "sport": "Badminton"
+    },
+    {
+      "id": 7,
+      "name": "MacLesggy",
+      "sport": "Badminton"
+    },
+    {
+      "id": 8,
+      "name": "PLS",
+      "sport": "Badminton"
+    },
+    {
+      "id": 9,
+      "name": "TeamJBZZ",
+      "sport": "Badminton"
+    },
+    {
+      "id": 10,
+      "name": "BluePotatoes",
+      "sport": "Badminton"
+    },
+    {
+      "id": 11,
+      "name": "ShulyTeam",
+      "sport": "Badminton"
+    },
+    {
+      "id": 12,
+      "name": "12h25",
+      "sport": "Badminton"
+    },
+    {
+      "id": 13,
+      "name": "SWPOT",
+      "sport": "Badminton"
+    },
+    {
+      "id": 14,
+      "name": "The Bot Line",
+      "sport": "Badminton"
+    },
+    {
+      "id": 15,
+      "name": "QLF",
+      "sport": "Badminton"
+    },
+    {
+      "id": 16,
+      "name": "Branlo",
+      "sport": "Badminton"
+    },
+    {
+      "id": 17,
+      "name": "Bad Boys",
+      "sport": "Badminton"
+    },
+    {
+      "id": 18,
+      "name": "Bloods",
+      "sport": "Badminton"
+    },
+    {
+      "id": 19,
+      "name": "Les Bad Thon",
+      "sport": "Badminton"
+    },
+    {
+      "id": 20,
+      "name": "Isark99",
+      "sport": "Badminton"
+    },
+    {
+      "id": 21,
+      "name": "LLAZ",
+      "sport": "Badminton"
+    },
+    {
+      "id": 22,
+      "name": "Chocolait",
+      "sport": "Badminton"
+    },
+    {
+      "id": 23,
+      "name": "girlpower",
+      "sport": "Badminton"
+    },
+    {
+      "id": 24,
+      "name": "Peanut",
+      "sport": "Badminton"
+    },
+    {
+      "id": 25,
+      "name": "Les poignards volant",
+      "sport": "Badminton"
+    },
+    {
+      "id": 26,
+      "name": "Les Combiers",
+      "sport": "Badminton"
+    },
+    {
+      "id": 27,
+      "name": "ha voila",
+      "sport": "Badminton"
+    },
+    {
+      "id": 28,
+      "name": "naha",
+      "sport": "Badminton"
+    },
+    {
+      "id": 29,
+      "name": "Green gold",
+      "sport": "Badminton"
+    },
+    {
+      "id": 30,
+      "name": "Perfect",
+      "sport": "Badminton"
+    },
+    {
+      "id": 31,
+      "name": "DARKNESS",
+      "sport": "Badminton"
+    },
+    {
+      "id": 32,
+      "name": "Tastik",
+      "sport": "Basketball"
+    },
+    {
+      "id": 33,
+      "name": "LGNEB",
+      "sport": "Basketball"
+    },
+    {
+      "id": 34,
+      "name": "Seirin",
+      "sport": "Basketball"
+    },
+    {
+      "id": 35,
+      "name": "ZGEGZGEGCLAN",
+      "sport": "Basketball"
+    },
+    {
+      "id": 36,
+      "name": "Croustichocs",
+      "sport": "Basketball"
+    },
+    {
+      "id": 37,
+      "name": "Zeebbi",
+      "sport": "Basketball"
+    },
+    {
+      "id": 38,
+      "name": "Ste-croix cavaliers",
+      "sport": "Basketball"
+    },
+    {
+      "id": 39,
+      "name": "C1",
+      "sport": "Basketball"
+    },
+    {
+      "id": 40,
+      "name": "BDR",
+      "sport": "Beachvolley"
+    },
+    {
+      "id": 41,
+      "name": "Dreamteam",
+      "sport": "Beachvolley"
+    },
+    {
+      "id": 42,
+      "name": "FlammingPinkFLAMINGOS",
+      "sport": "Beachvolley"
+    },
+    {
+      "id": 43,
+      "name": "LesGraneurs",
+      "sport": "Beachvolley"
+    },
+    {
+      "id": 44,
+      "name": "SandWish",
+      "sport": "Beachvolley"
+    },
+    {
+      "id": 45,
+      "name": "LesBePeas",
+      "sport": "Beachvolley"
+    },
+    {
+      "id": 46,
+      "name": "Qui_si_frotte_si_fritte",
+      "sport": "Beachvolley"
+    },
+    {
+      "id": 47,
+      "name": "Cogima",
+      "sport": "Beachvolley"
+    },
+    {
+      "id": 48,
+      "name": "Groupe 42",
+      "sport": "Beachvolley"
+    },
+    {
+      "id": 49,
+      "name": "Beach Godets",
+      "sport": "Beachvolley"
+    },
+    {
+      "id": 50,
+      "name": "Tamoulie Gang",
+      "sport": "Beachvolley"
+    },
+    {
+      "id": 51,
+      "name": "Impala",
+      "sport": "Beachvolley"
+    },
+    {
+      "id": 52,
+      "name": "Nikkijul",
+      "sport": "Golf-Disc"
+    },
+    {
+      "id": 53,
+      "name": "NC",
+      "sport": "Golf-Disc"
+    },
+    {
+      "id": 54,
+      "name": "98",
+      "sport": "Golf-Disc"
+    },
+    {
+      "id": 55,
+      "name": "Crashing Saucers",
+      "sport": "Golf-Disc"
+    },
+    {
+      "id": 56,
+      "name": "FinDesMatchs",
+      "sport": "Ultimate"
+    },
+    {
+      "id": 57,
+      "name": "RELAXMAX",
+      "sport": "Ultimate"
+    },
+    {
+      "id": 58,
+      "name": "lospinguinos",
+      "sport": "Unihockey"
+    },
+    {
+      "id": 59,
+      "name": "JDJ",
+      "sport": "Unihockey"
+    },
+    {
+      "id": 60,
+      "name": "CouscousRoyal",
+      "sport": "Unihockey"
+    },
+    {
+      "id": 61,
+      "name": "Coconut Family",
+      "sport": "Unihockey"
+    },
+    {
+      "id": 62,
+      "name": "Kristof",
+      "sport": "Unihockey"
+    },
+    {
+      "id": 63,
+      "name": "Les mecaniciens polis",
+      "sport": "Unihockey"
+    },
+    {
+      "id": 64,
+      "name": "Nwwa",
+      "sport": "Unihockey"
+    },
+    {
+      "id": 65,
+      "name": "Get Schwifty",
+      "sport": "Unihockey"
+    },
+    {
+      "id": 66,
+      "name": "LesFanDePetanque",
+      "sport": "Petanque"
+    },
+    {
+      "id": 67,
+      "name": "PajJoueAuBouleAvecNousStpGros",
+      "sport": "Petanque"
+    },
+    {
+      "id": 68,
+      "name": "Ui",
+      "sport": "Petanque"
+    },
+    {
+      "id": 69,
+      "name": "Crepes",
+      "sport": "Petanque"
+    },
+    {
+      "id": 70,
+      "name": "ElJasonitoYAndouillette",
+      "sport": "Petanque"
+    },
+    {
+      "id": 71,
+      "name": "SwitchPourNoelPeutetre",
+      "sport": "Petanque"
+    },
+    {
+      "id": 72,
+      "name": "Tchoin",
+      "sport": "Petanque"
+    },
+    {
+      "id": 73,
+      "name": "SaucissonBlanc",
+      "sport": "Petanque"
+    },
+    {
+      "id": 74,
+      "name": "VaniumTeam",
+      "sport": "Petanque"
+    },
+    {
+      "id": 75,
+      "name": "LuigiTIMES",
+      "sport": "Petanque"
+    },
+    {
+      "id": 76,
+      "name": "YouAreNotPrepared",
+      "sport": "Petanque"
+    },
+    {
+      "id": 77,
+      "name": "improbable",
+      "sport": "Petanque"
+    },
+    {
+      "id": 78,
+      "name": "LesEtrangers",
+      "sport": "Petanque"
+    },
+    {
+      "id": 79,
+      "name": "TerrainUn",
+      "sport": "Petanque"
+    },
+    {
+      "id": 80,
+      "name": "TrickShot",
+      "sport": "Petanque"
+    },
+    {
+      "id": 81,
+      "name": "LDS",
+      "sport": "Petanque"
+    },
+    {
+      "id": 82,
+      "name": "Raphael SCHNEITER",
+      "sport": "Marche"
+    },
+    {
+      "id": 83,
+      "name": "Benoit MEYLAN",
+      "sport": "Marche"
+    },
+    {
+      "id": 84,
+      "name": "Sacha USAN",
+      "sport": "Marche"
+    },
+    {
+      "id": 85,
+      "name": "Dorian NICLASS",
+      "sport": "Marche"
+    },
+    {
+      "id": 86,
+      "name": "Sylvain GANDINI",
+      "sport": "Marche"
+    },
+    {
+      "id": 87,
+      "name": "William HAUSMANN",
+      "sport": "Marche"
+    },
+    {
+      "id": 88,
+      "name": "Johan VOLAND",
+      "sport": "Marche"
+    },
+    {
+      "id": 89,
+      "name": "Maxim GOLAY",
+      "sport": "Marche"
+    },
+    {
+      "id": 90,
+      "name": "Thierry SCHAER",
+      "sport": "Marche"
+    },
+    {
+      "id": 91,
+      "name": "Gaetan GENDROZ",
+      "sport": "Marche"
+    },
+    {
+      "id": 92,
+      "name": "Frederique ANDOLFATTO",
+      "sport": "Marche"
+    },
+    {
+      "id": 93,
+      "name": "Samuel DELGADO",
+      "sport": "Marche"
+    },
+    {
+      "id": 94,
+      "name": "Antony NEYRET",
+      "sport": "Marche"
+    },
+    {
+      "id": 95,
+      "name": "Maylis PETIT",
+      "sport": "Marche"
+    },
+    {
+      "id": 96,
+      "name": "Alexandre BASEIA",
+      "sport": "Marche"
+    },
+    {
+      "id": 97,
+      "name": "Ideal SYLEJMANI",
+      "sport": "Marche"
+    },
+    {
+      "id": 98,
+      "name": "Joris DECOPPET",
+      "sport": "Marche"
+    },
+    {
+      "id": 99,
+      "name": "Zoe CHATAGNY",
+      "sport": "Marche"
+    },
+    {
+      "id": 100,
+      "name": "Aurelie GIOVANNONI",
+      "sport": "Marche"
+    },
+    {
+      "id": 101,
+      "name": "Clement MARCHETTO",
+      "sport": "Marche"
+    },
+    {
+      "id": 102,
+      "name": "Caroline REY",
+      "sport": "Marche"
+    },
+    {
+      "id": 103,
+      "name": "Alwyn NICOLLERAT",
+      "sport": "Gestionnaire de tournoi"
+    },
+    {
+      "id": 104,
+      "name": "Catarina DE-JESUS",
+      "sport": "Gestionnaire de tournoi"
+    },
+    {
+      "id": 105,
+      "name": "Lisa GORGERAT",
+      "sport": "Gestionnaire de tournoi"
+    },
+    {
+      "id": 106,
+      "name": "Jason CRISANTE",
+      "sport": "Gestionnaire de tournoi"
+    },
+    {
+      "id": 107,
+      "name": "Gaetan CHARMILLOT",
+      "sport": "Gestionnaire de tournoi"
+    },
+    {
+      "id": 108,
+      "name": "Fabien MASSON",
+      "sport": "Gestionnaire de tournoi"
+    },
+    {
+      "id": 109,
+      "name": "Orges GUSTURANAJ",
+      "sport": "Gestionnaire de tournoi"
+    },
+    {
+      "id": 110,
+      "name": "Luca TONINELLI",
+      "sport": "Gestionnaire de tournoi"
+    },
+    {
+      "id": 111,
+      "name": "Nicolas ROCHAT",
+      "sport": "Gestionnaire de tournoi"
+    },
+    {
+      "id": 112,
+      "name": "Loan REY",
+      "sport": "Gestionnaire de tournoi"
+    }
+  ]
+}

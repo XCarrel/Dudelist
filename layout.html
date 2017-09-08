@@ -1,0 +1,27 @@
+<html>
+<head>
+    <link href="sources/css/styles.css" rel="stylesheet" type="text/css">
+    <?php
+    $specificStyles = "sources/pages/$page/$page.css";
+    if (file_exists($specificStyles)) echo "<link href='$specificStyles' rel='stylesheet' type='text/css'>";
+    ?>
+    <meta charset="utf-8">
+    <title>Dude List - <?= $title ?></title>
+</head>
+<body>
+<header id="header">
+    <img src="assets/images/logoInformatiqueVert.jpg">
+    <nav>
+        <a href="/">Accueil</a>
+        <a href="/?page=list">Liste</a>
+    </nav>
+</header>
+<div id="page">
+    <div id="content"><?= $content ?></div>
+</div>
+
+<footer id="footer">
+    &copy; 2017 <a href="http://www.cpnv.ch">CPNV</a>
+</footer>
+</body>
+</html>

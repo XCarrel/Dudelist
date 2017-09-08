@@ -1,0 +1,19 @@
+<?php if(isset($new)) { ?>
+<h1>Nouvel ami</h1>
+<?php } else { ?>
+<h1>Détails de <?= $friend->fname ?></h1>
+<?php } ?>
+
+<form method="post">
+    <label for="fname">Prénom</label><input type="text" name="fname" id="fname" value="<?= $friend->fname ?>"><br>
+    <label for="lname">Nom</label><input type="text" name="lname" id="lname" value="<?= $friend->lname ?>"><br><br>
+    <label for="step">Etape</label><input type="number" name="step" id="step" value="<?= $friend->step ?>"><br><br>
+    <input type="hidden" name="id" value="<?= $friend->id ?>">
+    <?php if(isset($new)) { ?>
+    <button type="submit" name="add" class="greenbutton">Créer</button>
+    <?php } else { ?>
+    <button type="submit" name="save" class="greenbutton">Enregistrer</button>
+    <button type="submit" name="delete" class="redbutton">Supprimer</button>
+    <?php } ?>
+    <a href="/?page=list"><button type="button" class="bluebutton">Annuler</button></a>
+</form>

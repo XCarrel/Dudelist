@@ -1,0 +1,19 @@
+<?php if (isset($flashmsg)) { ?>
+<div class="flashMessage"><?= $flashmsg ?></div>
+<?php } ?>
+<h1>Mes Amis</h1>
+<table class="dudeTable">
+    <tr>
+        <th>Nom</th>
+        <th>Etape</th>
+    </tr>
+    <?php foreach ($friends as $friend) { ?>
+    <tr>
+        <td><a href="/?page=profile&id=<?= $friend->id ?>"><?= $friend->fname ?></a></td>
+        <td><?= $friend->step ?></td>
+    </tr>
+    <?php } ?>
+</table>
+<a href="/?page=profile&new">
+    <button class="greenbutton">Ajouter</button>
+</a>

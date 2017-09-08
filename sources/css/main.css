@@ -1,0 +1,94 @@
+/* CSS Document */
+html {
+  font-size: 100%; }
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 75%;
+  background-color: #fff;
+  margin: 10px; }
+
+a {
+  color: #333;
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: underline; }
+
+nav a {
+  font-size: 120%; }
+
+h1 {
+  margin-top: 0; }
+
+.icon {
+  width: 24px; }
+
+.flashMessage {
+  margin: 20px 0px;
+  border: 1px solid #f2dede;
+  background-color: #f2dede;
+  color: #b94a48;
+  padding: 4px 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px; }
+
+#content ul {
+  padding-left: 20px; }
+
+#content ul li {
+  margin-top: 0.4em; }
+
+form p {
+  padding-left: 150px;
+  padding-top: 4px;
+  padding-bottom: 4px; }
+
+form label {
+  font-weight: bold;
+  float: left;
+  width: 150px;
+  height: 24px;
+  line-height: 24px; }
+
+.button, .greenbutton, .redbutton, .bluebutton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 5px 12px;
+  margin: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px; }
+
+.greenbutton {
+  background-color: green; }
+
+.redbutton {
+  background-color: red; }
+
+.bluebutton {
+  background-color: #6c87ff; }
+
+form input[type="text"], form input[type="tel"], form input[type="email"], form input[type="url"], form input[type="date"], form select {
+  height: 24px;
+  line-height: 24px;
+  box-sizing: border-box; }
+
+.dudeTable {
+  border: 1px solid black;
+  border-collapse: collapse;
+  margin-left: 20px; }
+
+.dudeTable th {
+  border: 1px solid black;
+  background-color: #dddddd;
+  padding: 3px; }
+
+.dudeTable td {
+  border: 1px solid black;
+  padding: 3px; }
+
+/*# sourceMappingURL=main.css.map */
