@@ -85,6 +85,7 @@ function newFriend()
     $newFriend->fname = "";
     $newFriend->lname = "";
     $newFriend->step = 1;
+    $newFriend->git = "(tbd)";
     return $newFriend;
 }
 

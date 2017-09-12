@@ -72,10 +72,26 @@ form label {
 .bluebutton {
   background-color: #6c87ff; }
 
-form input[type="text"], form input[type="tel"], form input[type="email"], form input[type="url"], form input[type="date"], form select {
+.hidden {
+    display: none;
+}
+
+.wrong {
+    color: red;
+    padding-left: 20px;
+}
+
+form input[type="text"], form input[type="tel"], form input[type="number"], form input[type="email"], form input[type="url"], form input[type="date"], form select {
   height: 24px;
   line-height: 24px;
-  box-sizing: border-box; }
+    box-sizing: border-box;
+    margin: 2px;
+}
+
+form input[type="number"] {
+    width: 50px;
+    text-align: center;
+}
 
 .dudeTable {
   border: 1px solid black;

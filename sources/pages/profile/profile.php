@@ -33,7 +33,7 @@ if (isset($errormessage))
     require_once($_SERVER["DOCUMENT_ROOT"] . "/sources/pages/error/error.php");
 else
 {
-    extract($_POST); // $id, $fname, $lname, $save, $delete, $step
+    extract($_POST); // $id, $fname, $lname, $save, $delete, $step, $gitname
     if (isset($save) || isset($delete) || isset($add)) // an action took place
     {
         if (isset($save)) // Updates have been supplied by POST
@@ -41,6 +41,7 @@ else
             $friend->fname = $fname;
             $friend->lname = $lname;
             $friend->step = $step;
+            $friend->git = $gitname;
             saveFriend($friend); // persist new values in model
             $flashmsg = "Modifications enregistrées";
         }
@@ -54,6 +55,7 @@ else
             $friend->fname = $fname;
             $friend->lname = $lname;
             $friend->step = $step;
+            $friend->git = $gitname;
             addFriend($friend); // persist new values in model
             $flashmsg = $friend->fname . " " . $friend->lname . " a été ajouté à la liste";
         }

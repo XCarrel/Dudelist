@@ -2,7 +2,8 @@
 
 <form method="post">
     <?php include "partial_formfields.html"; ?>
-    <button type="submit" name="save" class="greenbutton">Enregistrer</button>
+    <button type="submit" id="btnsave" name="save" class="greenbutton hidden">Enregistrer</button>
     <button type="submit" name="delete" class="redbutton">Supprimer</button>
     <a href="/?page=list"><button type="button" class="bluebutton">Annuler</button></a>
 </form>
+<script src="sources/js/formval.js"></script>
