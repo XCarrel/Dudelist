@@ -6,7 +6,7 @@
  * Time: 15:18
  */
 
-$title="Profil";
+$title = "Profil";
 
 extract($_GET); // $page, $id, $new
 if (!isset($id) && !isset($new)) // neither view nor create
@@ -23,8 +23,7 @@ else
             $errormessage = "La personne demandée n'existe pas";
             $errordetails = "... en tout cas pas dans notre base de données";
         }
-    }
-    else // new user
+    } else // new user
     {
         $friend = newFriend();
     }
@@ -34,7 +33,7 @@ if (isset($errormessage))
     require_once($_SERVER["DOCUMENT_ROOT"] . "/sources/pages/error/error.php");
 else
 {
-    extract ($_POST); // $id, $fname, $lname, $save, $delete, $step
+    extract($_POST); // $id, $fname, $lname, $save, $delete, $step
     if (isset($save) || isset($delete) || isset($add)) // an action took place
     {
         if (isset($save)) // Updates have been supplied by POST
@@ -48,7 +47,7 @@ else
         if (isset($delete)) // request to delete
         {
             deleteFriend($id);
-            $flashmsg = $friend->fname." ".$friend->lname." a été supprimé de la liste";
+            $flashmsg = $friend->fname . " " . $friend->lname . " a été supprimé de la liste";
         }
         if (isset($add)) // Values for new guy have been supplied by POST
         {
@@ -56,13 +55,15 @@ else
             $friend->lname = $lname;
             $friend->step = $step;
             addFriend($friend); // persist new values in model
-            $flashmsg = $friend->fname." ".$friend->lname." a été ajouté à la liste";
+            $flashmsg = $friend->fname . " " . $friend->lname . " a été ajouté à la liste";
         }
         $friends = getFriends(); // the list view will need all friends
         require_once($_SERVER["DOCUMENT_ROOT"] . "/sources/pages/list/list.html"); // return view content
-    }
-    else
-        require_once($_SERVER["DOCUMENT_ROOT"] . "/sources/pages/profile/profile.html"); // return view content
+    } else
+        if (isset($new))
+            require_once($_SERVER["DOCUMENT_ROOT"] . "/sources/pages/profile/newprofile.html"); // return view content
+        else
+            require_once($_SERVER["DOCUMENT_ROOT"] . "/sources/pages/profile/editprofile.html"); // return view content
 }
 
 ?>
