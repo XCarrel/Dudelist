@@ -7,7 +7,7 @@
         <th>Nom</th>
         <th>Etape</th>
     </tr>
-    <?php foreach ($friends as $friend) { ?>
+    <?php foreach ($friends as $key => $friend) { ?>
     <tr>
         <td><a href="/?page=profile&id=<?= $friend->id ?>"><?= $friend->fname ?></a></td>
         <td><?= $friend->step ?></td>
