@@ -16,6 +16,7 @@ function fieldIsOK(fieldname)
             break;
         case 'step':                    // Step is between 1 and 19
             res = (fn > 0 && fn < 20);
+            console.log ('step = '+fn+', which is '+res);
             break;
     }
     return res;
@@ -35,8 +36,8 @@ function checkField(fieldname)
     checkForm(); // Evaluate if the form can be submitted or not, taking all fields into account
 }
 
-
-function checkForm() // Checks if all fields are OK and thus if the form can be submitted
+// Checks if all fields are OK and thus if the form can be submitted
+function checkForm()
 {
     btn = document.getElementById('btnadd'); // Start with assumption we are adding a new dude -> button is add
     if (btn == null) btn = document.getElementById('btnsave'); // if not we must be editing a dude -> button is save
@@ -48,16 +49,22 @@ function checkForm() // Checks if all fields are OK and thus if the form can be 
         btn.className = 'hidden'; // hide it
 }
 
-// Setup event listeners
-document.getElementById('fname').addEventListener("change", function () {
-    checkField('fname')
-});
-document.getElementById('lname').addEventListener("change", function () {
-    checkField('lname')
-});
-document.getElementById('gitname').addEventListener("change", function () {
-    checkField('gitname')
-});
-document.getElementById('step').addEventListener("change", function () {
-    checkField('step')
-});
+function initForm()
+{
+    fields = ['fname','lname','gitname','step'];
+
+    fields.forEach(function(field) {
+        f = document.getElementById(field);
+        f.addEventListener("keyup", function () { // Perform a check on each keystroke for instant feedback
+            checkField(field);
+        });
+        f.addEventListener("change", function () { // Perform a check upon change anyway in case the user pasted a bad value using the mouse only
+            checkField(field)
+        });
+        if (f.type == 'number')
+            f.addEventListener("input", function () { // Because change does not fire on a number input when up/down arrows are clicked
+                checkField(field)
+            });
+        checkField(field); // Initial check
+    });
+}
