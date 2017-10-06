@@ -9,11 +9,11 @@
     </tr>
     <?php foreach ($friends as $key => $friend) { ?>
     <tr>
-        <td><a href="/?page=profile&id=<?= $friend->id ?>"><?= $friend->fname ?></a></td>
+        <td><a href="/profile/<?= $friend->id ?>"><?= $friend->fname ?></a></td>
         <td><?= $friend->step ?></td>
     </tr>
     <?php } ?>
 </table>
-<a href="/?page=profile&new">
+<a href="/profile/new">
     <button class="greenbutton">Ajouter</button>
 </a>

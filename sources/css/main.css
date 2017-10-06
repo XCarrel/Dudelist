@@ -73,25 +73,21 @@ form label {
   background-color: #6c87ff; }
 
 .hidden {
-    display: none;
-}
+  display: none; }
 
 .wrong {
-    color: red;
-    padding-left: 20px;
-}
+  color: red;
+  padding-left: 20px; }
 
 form input[type="text"], form input[type="tel"], form input[type="number"], form input[type="email"], form input[type="url"], form input[type="date"], form select {
   height: 24px;
   line-height: 24px;
-    box-sizing: border-box;
-    margin: 2px;
-}
+  box-sizing: border-box;
+  margin: 2px; }
 
 form input[type="number"] {
-    width: 50px;
-    text-align: center;
-}
+  width: 50px;
+  text-align: center; }
 
 .dudeTable {
   border: 1px solid black;
@@ -105,8 +101,17 @@ form input[type="number"] {
 
 .dudeTable td {
   border: 1px solid black;
-    padding: 3px;
-    text-align: center;
-}
+  padding: 3px;
+  text-align: center; }
+
+.avatar {
+  height: 96px; }
+
+.gitprofile {
+  text-align: center;
+  padding: 10px;
+  float: right; }
+  .gitprofile h1 {
+    font-size: medium; }
 
 /*# sourceMappingURL=main.css.map */

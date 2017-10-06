@@ -1,6 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
+ * Purpose: Error controller
  * User: Xavier
  * Date: 25.08.17
  * Time: 15:55

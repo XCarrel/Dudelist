@@ -3,35 +3,34 @@
 // Sept 2017
 
 // Checks if the content of a given field complies
-function fieldIsOK(fieldname)
+function fieldIsOK(fieldId)
 {
-    fn = document.getElementById(fieldname).value;
+    fn = $(fieldId).val();
     res = false;
-    switch (fieldname) // Select the validation rule
+    switch (fieldId) // Select the validation rule
     {
-        case 'fname':                   // Names must be at least 2 chars long
-        case 'lname':                   // Names must be at least 2 chars long
-        case 'gitname':                 // Names must be at least 2 chars long
+        case '#fname':                   // Names must be at least 2 chars long
+        case '#lname':                   // Names must be at least 2 chars long
+        case '#gitname':
             res = (fn.length >= 2);
             break;
-        case 'step':                    // Step is between 1 and 19
+        case '#step':                    // Step is between 1 and 19
             res = (fn > 0 && fn < 20);
-            console.log ('step = '+fn+', which is '+res);
             break;
     }
     return res;
 }
 
 // Checks the field content, but also displays or hide the attached error message
-function checkField(fieldname)
+function checkField(fieldId)
 {
-    if (fieldIsOK(fieldname))
+    if (fieldIsOK(fieldId))
     {
-        document.getElementById('err' + fieldname).className = 'hidden';
+        $('#err' + fieldId.substring(1)).addClass('hidden');
     }
     else
     {
-        document.getElementById('err' + fieldname).className = 'wrong';
+        $('#err' + fieldId.substring(1)).removeClass('hidden');
     }
     checkForm(); // Evaluate if the form can be submitted or not, taking all fields into account
 }
@@ -39,32 +38,63 @@ function checkField(fieldname)
 // Checks if all fields are OK and thus if the form can be submitted
 function checkForm()
 {
-    btn = document.getElementById('btnadd'); // Start with assumption we are adding a new dude -> button is add
-    if (btn == null) btn = document.getElementById('btnsave'); // if not we must be editing a dude -> button is save
-    if (btn == null) return; // if not it's very wrong
+    btn = $('#btnadd'); // Start with assumption we are adding a new dude -> button is add
+    if (!btn.length) btn = $('#btnsave'); // if not we must be editing a dude -> button is save
+    if (!btn.length) return; // if not it's very wrong
 
-    if (fieldIsOK('fname') && fieldIsOK('lname') && fieldIsOK('gitname') && fieldIsOK('step')) // All fields are good ?
-        btn.className = 'greenbutton'; // show the button
+    if (fieldIsOK('#fname') && fieldIsOK('#lname') && fieldIsOK('#gitname') && fieldIsOK('#step')) // All fields are good ?
+        btn.removeClass('hidden'); // show the button
     else
-        btn.className = 'hidden'; // hide it
+        btn.addClass('hidden'); // hide it
 }
 
 function initForm()
 {
-    fields = ['fname','lname','gitname','step'];
+    fields = ['#fname','#lname','#gitname','#step'];
 
     fields.forEach(function(field) {
-        f = document.getElementById(field);
-        f.addEventListener("keyup", function () { // Perform a check on each keystroke for instant feedback
+        f = $(field);
+        f.keyup (function () { // Perform a check on each keystroke for instant feedback
             checkField(field);
         });
-        f.addEventListener("change", function () { // Perform a check upon change anyway in case the user pasted a bad value using the mouse only
+        f.change(function () { // Perform a check upon change anyway in case the user pasted a bad value using the mouse only
             checkField(field)
         });
-        if (f.type == 'number')
-            f.addEventListener("input", function () { // Because change does not fire on a number input when up/down arrows are clicked
+        if (f.attr('type') == 'number')
+            f.input(function () { // Because change does not fire on a number input when up/down arrows are clicked
                 checkField(field)
             });
         checkField(field); // Initial check
     });
+    checkGitname();
 }
+
+function checkGitname() {
+    fn = $('#gitname').val();
+    if (!fieldIsOK('#gitname')) return;
+    $.ajax({
+        url: 'https://api.github.com/users/'+fn,
+        //url: '/data/'+fn+'.json', // This is the file version, to use when the github api quota has busted
+        type: 'get',
+        success: function( data ) {
+            name = (data.name == null ? '(Nom inconnu)': data.name);
+            avatar_url = (data.avatar_url == null ? '../../../assets/images/unknown.png': data.avatar_url);
+            $('#avatar').attr('src', avatar_url);
+            $('#realname').html(name);
+        },
+        error: function () {
+            $('#avatar').attr('src', '../../../assets/images/ko.png');
+            $('#realname').html('N\'existe pas');
+        }
+    });
+}
+
+$('#avatar').click(function () {
+    checkGitname();
+});
+
+$('#gitname').keyup(function () {
+    $('#avatar').attr('src', '../../../assets/images/unknown.png');
+    $('#realname').html('');
+});
+
