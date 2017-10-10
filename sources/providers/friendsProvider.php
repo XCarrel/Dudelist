@@ -2,13 +2,30 @@
 /**
  * @package DataProvider
  * @author Xavier
- * @version 1.1
- * Date: 28.08.17
- * Time: 14:15
+ * @version 1.2
+ * Date: Oct.17
  *
  * Provides all storage-related functions for our friends' data
- * This version uses a text file in JSON format and is optimized for code cleanliness, not performance
+ * This version uses a MySQL datatbase
  */
+
+// Initialize $dbh, the database handler
+
+$dbname = "dudes";
+$hostname = "localhost";
+$username = "root";
+$password = "root";
+try
+{
+    $dbh = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
+    $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+} catch (PDOException $e)
+{
+    echo "mysql:host=$hostname;dbname=$dbname, $username, $password)";
+    die ("erreur de connexion au serveur (" . $e->getMessage() . ")");
+}
+$dbh->exec("SET NAMES 'utf8'");
+
 
 /** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  * Read the content of the locally stored data file. The file name is hardcoded
@@ -17,31 +34,36 @@
  */
 function getFriends()
 {
-    return json_decode(file_get_contents("data/friends.json"));
-}
+    global $dbh;
 
-/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
- * Saves the array passed in parameter in the locally stored data file. The file name is hardcoded
- *
- * @param $friends
- */
-function saveFriends($friends)
-{
-    file_put_contents("data/friends.json", json_encode($friends));
+    $sql = "SELECT idDude, fname, lname, gitname FROM dude";
+    $query = $dbh->prepare($sql);
+    if ($query->execute())
+        return $query->fetchAll();
+    else
+        die ("SQL Error in " . __FILE__ . ":" . __LINE__ . " :<br>$sql<br>Error message:" . $dbh->errorInfo()[2]);
 }
 
 /** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
  * Returns a specific friend from the list, or null if not found
  *
- * @param $id: the friend we want to get
+ * @param $id : the friend we want to get
  * @return a friend object
  */
 function getFriend($id)
 {
-    $friends = getFriends();
-    foreach ($friends as $friend)
-        if ($friend->id == $id) return $friend;
-    return null;
+    global $dbh;
+
+    $sql = "SELECT idDude, fname, lname, gitname FROM dude WHERE idDude= :id";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(":id", $id, PDO::PARAM_INT);
+    if ($query->execute())
+        return $query->fetch();
+    else
+    {
+        error_log("SQL Error in " . __FILE__ . ":" . __LINE__ . " :<br>$sql<br>Error message:" . $dbh->errorInfo()[2]);
+        return false;
+    }
 }
 
 /** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -51,11 +73,21 @@ function getFriend($id)
  */
 function saveFriend($f)
 {
-    $friends = getFriends();
-    foreach ($friends as $key => $friend)
-        if ($friend->id == $f->id) // Found the one
-            $friends[$key] = $f;  // $friend = $f is not an option because $friend is a copy of the item item in the array
-    saveFriends($friends);
+    global $dbh;
+
+    $sql = "UPDATE dude SET fname= :fname, lname= :lname, gitname= :gitname WHERE idDude= :id";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(":fname", $f['fname'], PDO::PARAM_STR);
+    $query->bindParam(":lname", $f['lname'], PDO::PARAM_STR);
+    $query->bindParam(":gitname", $f['gitname'], PDO::PARAM_STR);
+    $query->bindParam(":id", $f['idDude'], PDO::PARAM_INT);
+    if ($query->execute())
+        return true;
+    else
+    {
+        error_log("SQL Error in " . __FILE__ . ":" . __LINE__ . " :<br>$sql<br>Error message:" . $dbh->errorInfo()[2]);
+        return false;
+    }
 }
 
 /** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -64,9 +96,20 @@ function saveFriend($f)
  */
 function addFriend($f)
 {
-    $friends = getFriends();
-    $friends[] = $f; // add at the end of the list
-    saveFriends($friends);
+    global $dbh;
+
+    $sql = "INSERT INTO dude(fname,lname,gitname) VALUES (:fname, :lname, :gitname)";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(":fname", $f['fname'], PDO::PARAM_STR);
+    $query->bindParam(":lname", $f['lname'], PDO::PARAM_STR);
+    $query->bindParam(":gitname", $f['gitname'], PDO::PARAM_STR);
+    if ($query->execute())
+        return true;
+    else
+    {
+        error_log("SQL Error in " . __FILE__ . ":" . __LINE__ . " :<br>$sql<br>Error message:" . $dbh->errorInfo()[2]);
+        return false;
+    }
 }
 
 /** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -76,16 +119,7 @@ function addFriend($f)
  */
 function newFriend()
 {
-    $friends = getFriends();
-    $biggest = 0;
-    foreach ($friends as $friend)
-        if ($friend->id > $biggest) $biggest = $friend->id;
-    $newFriend = getFriend($biggest);
-    $newFriend->id++;
-    $newFriend->fname = "";
-    $newFriend->lname = "";
-    $newFriend->step = 1;
-    $newFriend->git = "(tbd)";
+    $newFriend = array("fname" => "", "lname" => "", "gitname" => "(tbd)");
     return $newFriend;
 }
 
@@ -97,10 +131,18 @@ function newFriend()
  */
 function deleteFriend($id)
 {
-    $friends = getFriends();
-    foreach ($friends as $friend)
-        if ($friend->id != $id) $keepers[] = $friend;
-    saveFriends($keepers);
+    global $dbh;
+
+    $sql = "DELETE FROM dude WHERE idDude= :id";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(":id", $id, PDO::PARAM_INT);
+    if ($query->execute())
+        return true;
+    else
+    {
+        error_log("SQL Error in " . __FILE__ . ":" . __LINE__ . " :<br>$sql<br>Error message:" . $dbh->errorInfo()[2]);
+        return false;
+    }
 }
 
 ?>

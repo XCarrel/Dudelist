@@ -5,12 +5,10 @@
 <table class="dudeTable">
     <tr>
         <th>Nom</th>
-        <th>Etape</th>
     </tr>
     <?php foreach ($friends as $key => $friend) { ?>
     <tr>
-        <td><a href="/profile/<?= $friend->id ?>"><?= $friend->fname ?></a></td>
-        <td><?= $friend->step ?></td>
+        <td><a href="/profile/<?= $friend['idDude'] ?>"><?= $friend['fname'] ?></a></td>
     </tr>
     <?php } ?>
 </table>

@@ -8,6 +8,7 @@
 
 include($_SERVER["DOCUMENT_ROOT"] . "/sources/providers/friendsProvider.php");
 $friends = getFriends();
+
 $title="Liste";
 
 require_once ($_SERVER["DOCUMENT_ROOT"] . "/sources/pages/list/list.html");

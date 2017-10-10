@@ -14,9 +14,6 @@ function fieldIsOK(fieldId)
         case '#gitname':
             res = (fn.length >= 2);
             break;
-        case '#step':                    // Step is between 1 and 19
-            res = (fn > 0 && fn < 20);
-            break;
     }
     return res;
 }
@@ -42,7 +39,7 @@ function checkForm()
     if (!btn.length) btn = $('#btnsave'); // if not we must be editing a dude -> button is save
     if (!btn.length) return; // if not it's very wrong
 
-    if (fieldIsOK('#fname') && fieldIsOK('#lname') && fieldIsOK('#gitname') && fieldIsOK('#step')) // All fields are good ?
+    if (fieldIsOK('#fname') && fieldIsOK('#lname') && fieldIsOK('#gitname')) // All fields are good ?
         btn.removeClass('hidden'); // show the button
     else
         btn.addClass('hidden'); // hide it
@@ -50,7 +47,7 @@ function checkForm()
 
 function initForm()
 {
-    fields = ['#fname','#lname','#gitname','#step'];
+    fields = ['#fname', '#lname', '#gitname'];
 
     fields.forEach(function(field) {
         f = $(field);

@@ -36,26 +36,30 @@ else
         {
             if (isset($save)) // Updates have been supplied by POST
             {
-                $friend->fname = $fname;
-                $friend->lname = $lname;
-                $friend->step = $step;
-                $friend->git = $gitname;
-                saveFriend($friend); // persist new values in model
-                $flashmsg = "Modifications enregistrées";
+                $friend['fname'] = $fname;
+                $friend['lname'] = $lname;
+                $friend['gitname'] = $gitname;
+                if (saveFriend($friend)) // persist new values in model
+                    $flashmsg = "Modifications enregistrées";
+                else
+                    $errormessage = "Erreur d'enregistrement";
             }
             if (isset($delete)) // request to delete
             {
-                deleteFriend($id);
-                $flashmsg = $friend->fname . " " . $friend->lname . " a été supprimé de la liste";
+                if (deleteFriend($id))
+                    $flashmsg = $friend['fname'] . " " . $friend['lname'] . " a été supprimé de la liste";
+                else
+                    $errormessage = "Erreur d'effacement";
             }
             if (isset($add)) // Values for new guy have been supplied by POST
             {
-                $friend->fname = $fname;
-                $friend->lname = $lname;
-                $friend->step = $step;
-                $friend->git = $gitname;
-                addFriend($friend); // persist new values in model
-                $flashmsg = $friend->fname . " " . $friend->lname . " a été ajouté à la liste";
+                $friend['fname'] = $fname;
+                $friend['lname'] = $lname;
+                $friend['gitname'] = $gitname;
+                if (addFriend($friend)) // persist new values in model
+                    $flashmsg = $friend['fname'] . " " . $friend['lname'] . " a été ajouté à la liste";
+                else
+                    $errormessage = "Erreur de création";
             }
             $friends = getFriends(); // the list view will need all friends
             require_once($_SERVER["DOCUMENT_ROOT"] . "/sources/pages/list/list.html"); // return view content
