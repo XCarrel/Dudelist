@@ -9,22 +9,28 @@
  * This version uses a MySQL datatbase
  */
 
-// Initialize $dbh, the database handler
-
-$dbname = "dudes";
-$hostname = "localhost";
-$username = "root";
-$password = "root";
-try
+/** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+ * Returns a connection to the database
+ *
+ */
+function dbConnection()
 {
-    $dbh = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
-    $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-} catch (PDOException $e)
-{
-    echo "mysql:host=$hostname;dbname=$dbname, $username, $password)";
-    die ("erreur de connexion au serveur (" . $e->getMessage() . ")");
+    $dbname = "dudes";
+    $hostname = "localhost";
+    $username = "root";
+    $password = "root";
+    try
+    {
+        $dbh = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
+        $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $dbh->exec("SET NAMES 'utf8'");
+        return $dbh;
+    } catch (PDOException $e)
+    {
+        echo "mysql:host=$hostname;dbname=$dbname, $username, $password)";
+        die ("erreur de connexion au serveur (" . $e->getMessage() . ")");
+    }
 }
-$dbh->exec("SET NAMES 'utf8'");
 
 
 /** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -34,7 +40,7 @@ $dbh->exec("SET NAMES 'utf8'");
  */
 function getFriends()
 {
-    global $dbh;
+    $dbh = dbConnection();
 
     $sql = "SELECT idDude, fname, lname, gitname FROM dude";
     $query = $dbh->prepare($sql);
@@ -52,7 +58,7 @@ function getFriends()
  */
 function getFriend($id)
 {
-    global $dbh;
+    $dbh = dbConnection();
 
     $sql = "SELECT idDude, fname, lname, gitname FROM dude WHERE idDude= :id";
     $query = $dbh->prepare($sql);
@@ -73,7 +79,7 @@ function getFriend($id)
  */
 function saveFriend($f)
 {
-    global $dbh;
+    $dbh = dbConnection();
 
     $sql = "UPDATE dude SET fname= :fname, lname= :lname, gitname= :gitname WHERE idDude= :id";
     $query = $dbh->prepare($sql);
@@ -96,7 +102,7 @@ function saveFriend($f)
  */
 function addFriend($f)
 {
-    global $dbh;
+    $dbh = dbConnection();
 
     $sql = "INSERT INTO dude(fname,lname,gitname) VALUES (:fname, :lname, :gitname)";
     $query = $dbh->prepare($sql);
@@ -131,7 +137,7 @@ function newFriend()
  */
 function deleteFriend($id)
 {
-    global $dbh;
+    $dbh = dbConnection();
 
     $sql = "DELETE FROM dude WHERE idDude= :id";
     $query = $dbh->prepare($sql);

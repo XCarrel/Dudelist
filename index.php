@@ -16,7 +16,7 @@
  *
  */
 
-$appVersion = "v1.3";
+$appVersion = "v1.4";
 
 // Route analysis
 $routeparts = explode("/", $_SERVER['REQUEST_URI']); // The URI starts with a '/' so $routeparts[0] will be void
