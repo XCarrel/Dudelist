@@ -43,7 +43,7 @@ function getFriends()
 {
     $dbh = dbConnection();
 
-    $sql = "SELECT idDude, fname, lname, gitname FROM dudex";
+    $sql = "SELECT idDude, fname, lname, gitname FROM dude";
     $query = $dbh->prepare($sql);
     try {
         $query->execute();
