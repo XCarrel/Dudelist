@@ -2,8 +2,8 @@
 /**
  * @package DataProvider
  * @author Xavier
- * @version 1.2
- * Date: Oct.17
+ * @version 1.2.1
+ * Date: Nov.17
  *
  * Provides all storage-related functions for our friends' data
  * This version uses a MySQL datatbase
@@ -23,6 +23,7 @@ function dbConnection()
     {
         $dbh = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
         $dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $dbh->exec("SET NAMES 'utf8'");
         return $dbh;
     } catch (PDOException $e)
@@ -42,12 +43,14 @@ function getFriends()
 {
     $dbh = dbConnection();
 
-    $sql = "SELECT idDude, fname, lname, gitname FROM dude";
+    $sql = "SELECT idDude, fname, lname, gitname FROM dudex";
     $query = $dbh->prepare($sql);
-    if ($query->execute())
+    try {
+        $query->execute();
         return $query->fetchAll();
-    else
-        die ("SQL Error in " . __FILE__ . ":" . __LINE__ . " :<br>$sql<br>Error message:" . $dbh->errorInfo()[2]);
+    } catch (PDOException $e) {
+        error_log("PDOException in ".$e->getFile()." at line ".$e->getLine().": ".$e->getMessage());
+    }
 }
 
 /** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -63,12 +66,12 @@ function getFriend($id)
     $sql = "SELECT idDude, fname, lname, gitname FROM dude WHERE idDude= :id";
     $query = $dbh->prepare($sql);
     $query->bindParam(":id", $id, PDO::PARAM_INT);
-    if ($query->execute())
-        return $query->fetch();
-    else
+    try
     {
-        error_log("SQL Error in " . __FILE__ . ":" . __LINE__ . " :<br>$sql<br>Error message:" . $dbh->errorInfo()[2]);
-        return false;
+        $query->execute();
+        return $query->fetch();
+    } catch (PDOException $e) {
+        error_log("PDOException in ".$e->getFile()." at line ".$e->getLine().": ".$e->getMessage());
     }
 }
 
@@ -87,12 +90,11 @@ function saveFriend($f)
     $query->bindParam(":lname", $f['lname'], PDO::PARAM_STR);
     $query->bindParam(":gitname", $f['gitname'], PDO::PARAM_STR);
     $query->bindParam(":id", $f['idDude'], PDO::PARAM_INT);
-    if ($query->execute())
+    try {
+        $query->execute();
         return true;
-    else
-    {
-        error_log("SQL Error in " . __FILE__ . ":" . __LINE__ . " :<br>$sql<br>Error message:" . $dbh->errorInfo()[2]);
-        return false;
+    } catch (PDOException $e) {
+        error_log("PDOException in ".$e->getFile()." at line ".$e->getLine().": ".$e->getMessage());
     }
 }
 
@@ -109,12 +111,11 @@ function addFriend($f)
     $query->bindParam(":fname", $f['fname'], PDO::PARAM_STR);
     $query->bindParam(":lname", $f['lname'], PDO::PARAM_STR);
     $query->bindParam(":gitname", $f['gitname'], PDO::PARAM_STR);
-    if ($query->execute())
+    try {
+        $query->execute();
         return true;
-    else
-    {
-        error_log("SQL Error in " . __FILE__ . ":" . __LINE__ . " :<br>$sql<br>Error message:" . $dbh->errorInfo()[2]);
-        return false;
+    } catch (PDOException $e) {
+        error_log("PDOException in ".$e->getFile()." at line ".$e->getLine().": ".$e->getMessage());
     }
 }
 
@@ -142,12 +143,11 @@ function deleteFriend($id)
     $sql = "DELETE FROM dude WHERE idDude= :id";
     $query = $dbh->prepare($sql);
     $query->bindParam(":id", $id, PDO::PARAM_INT);
-    if ($query->execute())
+    try {
+        $query->execute();
         return true;
-    else
-    {
-        error_log("SQL Error in " . __FILE__ . ":" . __LINE__ . " :<br>$sql<br>Error message:" . $dbh->errorInfo()[2]);
-        return false;
+    } catch (PDOException $e) {
+        error_log("PDOException in ".$e->getFile()." at line ".$e->getLine().": ".$e->getMessage());
     }
 }
 

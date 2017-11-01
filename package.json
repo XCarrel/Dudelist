@@ -1,0 +1,29 @@
+{
+  "name": "dudelist",
+  "version": "1.4.0",
+  "description": "Web application managing a list of friends",
+  "main": "index.php",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XCarrel/Dudelist.git"
+  },
+  "keywords": [
+    "mvc",
+    "php",
+    "javascript",
+    "jquery",
+    "ajax"
+  ],
+  "author": "X. Carrel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XCarrel/Dudelist/issues"
+  },
+  "homepage": "https://github.com/XCarrel/Dudelist#readme",
+  "dependencies": {
+  	"jquery": "3.2.1"
+  }
+}

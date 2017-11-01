@@ -1,14 +1,14 @@
 <?php
 /**
  * @author Xavier
- * @version 1.3
- * Date: 28.08.17
- * Time: 14:15
+ * @version 1.4
+ * Date: 1.11.17
  *
  * Entry point of the application.
  * Performs the route analysis and invokes the proper controller
  *
  * History:
+ *      v1.4    With PDO
  *      v1.3    Introduces routes
  *      v1.2    Introduces JQuery and Ajax calls to get GIT username details
  *      v1.1    Form validation (user profile) with JS
