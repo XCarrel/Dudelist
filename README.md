@@ -1,13 +1,14 @@
 
-#Pre-requisites
+# Pre-requisites
 
+- git installed
 - node.js installed (npm command available)
 - Workbench v6 or more
 - phpStorm 2017 or more
 - LAMP server is running
 - Apache Rewrite module is enabled
 
-#Installation
+# Installation
 
 1. Clone repo on your local drive
 1. `cd` into Dudelist directory
